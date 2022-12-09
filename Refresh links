@@ -1,0 +1,23 @@
+function onOpen() {
+  const ui = SpreadsheetApp.getUi();
+  ui.createMenu("Refresh")
+      .addItem('Refresh_all_data','Refresh_all_data')
+      .addToUi();
+}
+
+
+function Refresh_all_data() {
+  var ss = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('Sheetname')
+  var importrange =  ss.getRange('A2')
+  var importformulas = importrange.getFormulas();
+  importrange.clearContent();
+  SpreadsheetApp.flush();
+  importrange.setFormulas(importformulas)
+  
+  var ss = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('Sheetname')
+  var importrange =  ss.getRange('J2')
+  var importformulas = importrange.getFormulas();
+  importrange.clearContent();
+  SpreadsheetApp.flush();
+  importrange.setFormulas(importformulas)
+}
