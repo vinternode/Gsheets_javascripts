@@ -1,0 +1,20 @@
+function appendData() {
+  var sourceSheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("source");
+  var targetSheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("target");
+    
+  // GET SOURCE DATA RANGE
+  var sourceDataRange = sourceSheet.getRange(1, 1, sourceSheet.getLastRow(), sourceSheet.getLastColumn());
+  // GET THE DATA CONTENT/VALUES OF THE SOURCE DATA RANGE
+  var sourceData = sourceDataRange.getValues();
+  
+  
+  // GET TO TARGET SHEET AND FIX THE RANGE FOR PASTING
+  var targetRange = targetSheet.getRange(targetSheet.getLastRow() + 1, 1, sourceData.length,sourceData[0].length );
+  // PASTE THE SOURCE DATA INTO THE TARGET RANGE.
+  targetRange.setValues(sourceData);
+
+  // console.log(sourceData[0].length);
+  // console.log(targetSheet.getRange(1, 1, 1, targetSheet.getLastColumn()).getValues()[0])
+  // sourceData.length, sourceData[0].length
+
+}
